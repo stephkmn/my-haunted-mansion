@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://v0vr78iibkwp"]
+
+[ext_resource type="Texture2D" uid="uid://dtld2kx1qy7mw" path="res://Halloween ≡ƒÄâ _ Wallpapers Design Art Craft_ Full Moon _ Night sky with this magical iPhone Wallpaper.jpg" id="1_obmbp"]
+[ext_resource type="Script" uid="uid://cda5n07cidibc" path="res://button_game_1.gd" id="1_pendn"]
+[ext_resource type="Theme" uid="uid://bp52h53onw02p" path="res://activity_selection_screen.tres" id="1_vxeg3"]
+[ext_resource type="Script" path="res://button_2.gd" id="2_obmbp"]
+[ext_resource type="Script" uid="uid://c80nndttip7yi" path="res://button_game_2.gd" id="3_vxeg3"]
+[ext_resource type="Script" uid="uid://d2rguf8m3gbpx" path="res://button_game_3.gd" id="4_h0vve"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vxeg3"]
+texture = ExtResource("1_obmbp")
+
+[node name="ActivitySelectionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vxeg3")
+
+[node name="SpookyHouseBkgd" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 1600.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vxeg3")
+
+[node name="ButtonGame1" type="Button" parent="."]
+visibility_layer = 2
+layout_mode = 0
+offset_left = 310.0
+offset_top = 923.0
+offset_right = 361.0
+offset_bottom = 1032.0
+text = "1"
+script = ExtResource("1_pendn")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "idek"
+script = ExtResource("2_obmbp")
+
+[node name="ButtonGame2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 838.0
+offset_right = 703.0
+offset_bottom = 961.0
+text = "2"
+script = ExtResource("3_vxeg3")
+
+[node name="ButtonGame3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 785.0
+offset_top = 835.0
+offset_right = 829.0
+offset_bottom = 965.0
+text = "3"
+script = ExtResource("4_h0vve")
+
+[connection signal="pressed" from="ButtonGame1" to="ButtonGame1" method="_on_pressed"]
+[connection signal="pressed" from="ButtonGame2" to="ButtonGame2" method="_on_pressed"]
+[connection signal="pressed" from="ButtonGame3" to="ButtonGame3" method="_on_pressed"]

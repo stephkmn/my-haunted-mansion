@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5i77ywg3gtjy"]
+
+[ext_resource type="Theme" uid="uid://dxlikx2jlwkyn" path="res://activity_selection_screen.tres" id="1_hr4rc"]
+[ext_resource type="Script" uid="uid://do78qlfjcslnr" path="res://algebra_game.gd" id="2_76u51"]
+[ext_resource type="Script" uid="uid://66ktigk8u4rv" path="res://item_list.gd" id="2_o3d6l"]
+[ext_resource type="FontFile" uid="uid://b1bj8jqggwim4" path="res://metal-mania.regular.ttf" id="3_w4esw"]
+[ext_resource type="Script" uid="uid://dvdlqjmcmymfc" path="res://rich_text_label.gd" id="4_2ousn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ofm2"]
+bg_color = Color(0.6352232, 0.55733144, 0.826887, 1)
+
+[node name="AlgebraGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hr4rc")
+script = ExtResource("2_76u51")
+
+[node name="AlgebraGameBkgd" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 1600.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ofm2")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 886.0
+offset_right = 796.0
+offset_bottom = 1181.0
+theme = ExtResource("1_hr4rc")
+item_count = 4
+item_0/text = "1a"
+item_0/selectable = false
+item_1/text = "2b"
+item_1/selectable = false
+item_2/text = "3c"
+item_2/selectable = false
+item_3/text = "4d"
+item_3/selectable = false
+script = ExtResource("2_o3d6l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 233.0
+offset_right = 860.0
+offset_bottom = 562.0
+theme = ExtResource("1_hr4rc")
+theme_override_fonts/normal_font = ExtResource("3_w4esw")
+theme_override_font_sizes/normal_font_size = 100
+text = "3x + 4 = 9"
+horizontal_alignment = 1
+script = ExtResource("4_2ousn")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 573.0
+offset_right = 850.0
+offset_bottom = 829.0
+theme = ExtResource("1_hr4rc")
+theme_override_fonts/normal_font = ExtResource("3_w4esw")
+theme_override_font_sizes/normal_font_size = 100
+text = "x = ___ ?"
+horizontal_alignment = 1
+
+[connection signal="item_clicked" from="ItemList" to="ItemList" method="_on_item_clicked"]
+[connection signal="new_question" from="ItemList" to="RichTextLabel" method="_on_new_question"]

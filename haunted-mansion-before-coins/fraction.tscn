@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwcb0dujqkk40"]
+
+[ext_resource type="Script" uid="uid://ll6xa6dnktxw" path="res://fraction.gd" id="1_l66su"]
+[ext_resource type="Texture2D" uid="uid://dgcgx3kku0ch4" path="res://4b6827186c9d2655ec20cbac730a2dd5.jpg" id="1_x45qf"]
+[ext_resource type="Theme" uid="uid://c1gu1c180ow7f" path="res://MyTheme.tres" id="3_54jew"]
+[ext_resource type="Script" uid="uid://m8g1buxdxnjq" path="res://button.gd" id="3_bld1t"]
+[ext_resource type="Script" uid="uid://bj6t7oh36lx15" path="res://label_2.gd" id="4_54jew"]
+[ext_resource type="FontFile" uid="uid://du4wscjq015ao" path="res://Magnificent Nightmare.ttf" id="5_54jew"]
+[ext_resource type="Script" uid="uid://cu7f3fvvxhkjm" path="res://return_home_from_fraction.gd" id="7_ybi5i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ysjy"]
+texture = ExtResource("1_x45qf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybi5i"]
+bg_color = Color(0.35265967, 0.23406982, 0.4609375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54jew"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuarq"]
+bg_color = Color(0.875, 0.875, 0.875, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toev0"]
+bg_color = Color(0.78900003, 0.81640625, 0.6760864, 1)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_l66su")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 900.0
+offset_bottom = 1600.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_3ysjy")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 307.0
+offset_top = 1119.0
+offset_right = 607.0
+offset_bottom = 1266.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_54jew")
+theme_override_colors/font_hover_color = Color(0.3529412, 0.23529412, 0.4627451, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_ybi5i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_54jew")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xuarq")
+text = "Fraction"
+script = ExtResource("3_bld1t")
+
+[node name="TowerOfTerror" type="Sprite2D" parent="."]
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 213.0
+offset_top = 1331.0
+offset_right = 701.0
+offset_bottom = 1438.0
+theme = ExtResource("3_54jew")
+theme_override_colors/font_color = Color(0.3322432, 0.13101196, 0.4140625, 1)
+theme_override_colors/font_uneditable_color = Color(0.3529412, 0.23529412, 0.4627451, 0.44313726)
+theme_override_colors/font_placeholder_color = Color(0.3529412, 0.23529412, 0.4627451, 0.44313726)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_toev0")
+placeholder_text = "Enter your answer here"
+alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 105.0
+offset_top = 86.0
+offset_right = 814.0
+offset_bottom = 212.0
+theme = ExtResource("3_54jew")
+theme_override_fonts/font = ExtResource("5_54jew")
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_54jew")
+
+[node name="ThingForDoneScreen" type="ColorRect" parent="."]
+offset_left = 100.0
+offset_top = 645.0
+offset_right = 800.0
+offset_bottom = 995.0
+color = Color(0.3529412, 0.23529412, 0.4627451, 1)
+
+[node name="ReturnHomeFromFraction" type="Button" parent="."]
+offset_left = 310.0
+offset_top = 895.0
+offset_right = 585.0
+offset_bottom = 975.0
+theme = ExtResource("3_54jew")
+theme_override_font_sizes/font_size = 24
+text = "Return"
+script = ExtResource("7_ybi5i")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 112.0
+offset_top = 1452.0
+offset_right = 728.0
+offset_bottom = 1546.0
+theme = ExtResource("3_54jew")
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Label2" method="_on_button_pressed"]
+[connection signal="pressed" from="ReturnHomeFromFraction" to="ReturnHomeFromFraction" method="_on_pressed"]

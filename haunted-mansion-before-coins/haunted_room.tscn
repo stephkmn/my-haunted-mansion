@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba7r4w102mkm"]
+
+[ext_resource type="Script" uid="uid://dqk64d5llq4wc" path="res://scripts/haunted_room.gd" id="1_1f2v7"]
+[ext_resource type="Script" uid="uid://dqm0hk1405ci0" path="res://scripts/main.gd" id="1_23ni0"]
+[ext_resource type="Theme" uid="uid://c1gu1c180ow7f" path="res://MyTheme.tres" id="3_f2m3m"]
+[ext_resource type="Script" uid="uid://c3qiouiwvjisb" path="res://scripts/furniture_store.gd" id="3_pb5aq"]
+[ext_resource type="Texture2D" uid="uid://8docx3sb2vjr" path="res://assets/furniture/window.png" id="4_pb5aq"]
+[ext_resource type="Script" uid="uid://dnbbiwatyd0hk" path="res://home_button_from_room.gd" id="6_s2dqa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2dqa"]
+bg_color = Color(0.9843137, 0.93333334, 0.64705884, 0)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_23ni0")
+
+[node name="FurnitureStore" type="CanvasLayer" parent="."]
+script = ExtResource("3_pb5aq")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FurnitureStore"]
+offset_left = 216.0
+offset_top = 27.0
+offset_right = 616.0
+offset_bottom = 427.0
+theme = ExtResource("3_f2m3m")
+
+[node name="GridContainer" type="GridContainer" parent="FurnitureStore/ScrollContainer"]
+layout_mode = 2
+theme = ExtResource("3_f2m3m")
+
+[node name="HauntedRoom" type="Node2D" parent="."]
+script = ExtResource("1_1f2v7")
+
+[node name="Background" type="ColorRect" parent="HauntedRoom"]
+offset_right = 900.0
+offset_bottom = 1600.0
+color = Color(0.5568628, 0.21568628, 0.8, 1)
+
+[node name="Floor" type="ColorRect" parent="HauntedRoom"]
+offset_left = -8.0
+offset_top = 899.0
+offset_right = 909.0
+offset_bottom = 1838.0
+color = Color(0.7578125, 0.6151226, 0.39370728, 1)
+
+[node name="FurnitureSpawnArea" type="ColorRect" parent="HauntedRoom"]
+offset_left = 54.0
+offset_top = 51.0
+offset_right = 843.0
+offset_bottom = 1312.0
+color = Color(0.47908688, 0.83166224, 0.98924965, 0.41568628)
+
+[node name="Sprite2D" type="Sprite2D" parent="HauntedRoom"]
+position = Vector2(271, 580)
+texture = ExtResource("4_pb5aq")
+
+[node name="ReturnHomeFromRoom" type="Button" parent="HauntedRoom"]
+offset_left = 771.0
+offset_top = 13.0
+offset_right = 859.0
+offset_bottom = 93.0
+theme = ExtResource("3_f2m3m")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_s2dqa")
+text = "Back"
+script = ExtResource("6_s2dqa")
+
+[connection signal="furniture_removed" from="HauntedRoom" to="FurnitureStore" method="_on_haunted_room_furniture_removed"]
+[connection signal="pressed" from="HauntedRoom/ReturnHomeFromRoom" to="HauntedRoom/ReturnHomeFromRoom" method="_on_pressed"]

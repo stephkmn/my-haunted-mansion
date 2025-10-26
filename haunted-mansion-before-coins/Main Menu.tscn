@@ -1,0 +1,159 @@
+[gd_scene load_steps=11 format=3 uid="uid://bm851g00vxoko"]
+
+[ext_resource type="Texture2D" uid="uid://dgcgx3kku0ch4" path="res://4b6827186c9d2655ec20cbac730a2dd5.jpg" id="1_xwd2w"]
+[ext_resource type="FontFile" uid="uid://bep1517kftrs" path="res://Scary Halloween Font.ttf" id="2_dvdtt"]
+[ext_resource type="Script" uid="uid://m8g1buxdxnjq" path="res://button.gd" id="3_i5qic"]
+[ext_resource type="Script" uid="uid://bj6t7oh36lx15" path="res://label_2.gd" id="4_12kdf"]
+[ext_resource type="FontFile" uid="uid://du4wscjq015ao" path="res://Magnificent Nightmare.ttf" id="4_xwd2w"]
+
+[sub_resource type="GDScript" id="GDScript_i5qic"]
+script/source = "extends Node2D
+
+@onready var line_edit: LineEdit = $LineEdit
+@onready var label: Label = $Label
+@onready var label2: Label = $Label2
+
+const QUESTIONS = [
+	{
+		\"question\" : \"1/2 + 3/4 = ?\",
+		\"answer_float\" : 1.25,
+		\"answer_string\": \"1.25\"
+	},
+	{
+		\"question\" : \"6/7 + 2/7 = ?\",
+		\"answer_float\" : 8.0/7.0,
+		\"answer_string\": \"1.14\"
+	},
+	{
+		\"question\" : \"11/21 + 3/4 = ?\",
+		\"answer_float\" : 107.0/84.0,
+		\"answer_string\": \"1.29\"
+	},
+]
+var current_question_index: int = 0
+var score: int = 0
+func _ready():
+	line_edit.text_submitted.connect(_on_LineEdit_text_entered)
+	_display_current_question()
+	line_edit.grab_focus()
+
+func _display_current_question() -> void:
+	if current_question_index < QUESTIONS.size():
+		label2.text = QUESTIONS[current_question_index].question
+		label.text = \"Enter your answer below.\"
+		label.modulate = Color.WHITE	
+	else:
+		label2.text = \"QUIZ COMPLETE!\"
+		label.text = \"Final Score: %d/%d\" % [score, QUESTIONS.size()]
+		label.modulate = Color.GREEN
+		line_edit.editable = false 
+		
+		
+func _on_LineEdit_text_entered(new_text: String) -> void:
+	var input_text = new_text.strip_edges()
+	if input_text.is_empty():
+		line_edit.clear()
+		line_edit.grab_focus()
+		return
+		
+	if current_question_index >= QUESTIONS.size():
+		return
+	var user_input_float: float = input_text.to_float()
+	
+	var correct_answer = QUESTIONS[current_question_index].answer_float
+	var correct_answer_str = QUESTIONS[current_question_index].answer_string
+	
+	if input_text.is_valid_float() and is_equal_approx(user_input_float, correct_answer):
+		label.text = \"CORRECT! (%s)\" % correct_answer_str
+		label.modulate = Color.GREEN
+		score += 1
+	else:
+		label.text = \"INCORRECT. The correct answer was: %s\" % correct_answer_str
+		label.modulate = Color.RED
+	
+
+	line_edit.clear()
+	line_edit.grab_focus()
+	await get_tree().create_timer(5.0).timeout
+	
+	current_question_index += 1
+	_display_current_question()
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvdtt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yr4w"]
+bg_color = Color(0.34050903, 0.21785912, 0.45020038, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5qic"]
+bg_color = Color(0.26930338, 0.13980559, 0.3207833, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12kdf"]
+
+[node name="MainMenu" type="Node2D"]
+script = SubResource("GDScript_i5qic")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 4.0
+offset_right = 1883.0
+offset_bottom = 1605.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dvdtt")
+
+[node name="TowerOfTerror" type="Sprite2D" parent="."]
+position = Vector2(476.58444, 774.06244)
+scale = Vector2(1.315043, 1.717639)
+texture = ExtResource("1_xwd2w")
+
+[node name="Button" type="Button" parent="TowerOfTerror"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -462.93933
+offset_top = -271.59882
+offset_right = -243.96196
+offset_bottom = -161.55377
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_dvdtt")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_7yr4w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7yr4w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_i5qic")
+text = "Fraction"
+script = ExtResource("3_i5qic")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 248.0
+offset_top = 1289.0
+offset_right = 726.0
+offset_bottom = 1364.0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_12kdf")
+alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 104.0
+offset_top = 1458.0
+offset_right = 879.0
+offset_bottom = 1542.0
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+offset_left = 152.0
+offset_top = 20.0
+offset_right = 814.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource("4_xwd2w")
+theme_override_font_sizes/font_size = 35
+text = "1/2 + 3/4 = ?"
+horizontal_alignment = 1
+script = ExtResource("4_12kdf")
+
+[connection signal="pressed" from="TowerOfTerror/Button" to="TowerOfTerror/Button" method="_on_pressed"]
+[connection signal="pressed" from="TowerOfTerror/Button" to="Label2" method="_on_button_pressed"]

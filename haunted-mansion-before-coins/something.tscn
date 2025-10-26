@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://cb2rdg075ayor"]
+
+[ext_resource type="Script" uid="uid://c52sc4aahncqe" path="res://window.gd" id="1_45ium"]
+[ext_resource type="Texture2D" uid="uid://lllm1w3uhjlh" path="res://popCatOpen.jpg" id="2_u500m"]
+[ext_resource type="Texture2D" uid="uid://bl8lkw5qvu1kh" path="res://popCatClosed.jpg" id="3_aqv7c"]
+[ext_resource type="Script" uid="uid://dfmyvksljl5gh" path="res://control.gd" id="4_u500m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sg4eg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u500m")
+}],
+"loop": true,
+"name": &"clicked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_aqv7c")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibf42"]
+
+[node name="Window" type="Area2D"]
+position = Vector2(-1, 10)
+script = ExtResource("1_45ium")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(57, 46)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_sg4eg")
+animation = &"clicked"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_ibf42")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_u500m")

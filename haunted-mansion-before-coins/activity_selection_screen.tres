@@ -1,0 +1,45 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bp52h53onw02p"]
+
+[ext_resource type="FontFile" uid="uid://bep1517kftrs" path="res://Scary Halloween Font.ttf" id="1_0bkw2"]
+[ext_resource type="Texture2D" uid="uid://taftjm4mbul4" path="res://windowpane.png" id="2_6im5b"]
+[ext_resource type="FontFile" uid="uid://b1bj8jqggwim4" path="res://metal-mania.regular.ttf" id="4_6im5b"]
+[ext_resource type="FontFile" uid="uid://du4wscjq015ao" path="res://Magnificent Nightmare.ttf" id="4_wbqib"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sky72"]
+texture = ExtResource("2_6im5b")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xp2d4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fj5cn"]
+texture = SubResource("CompressedTexture2D_xp2d4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kbped"]
+texture = ExtResource("2_6im5b")
+modulate_color = Color(0.5921569, 1, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iy58a"]
+texture = ExtResource("2_6im5b")
+
+[resource]
+default_font = ExtResource("4_wbqib")
+default_font_size = 45
+Button/colors/font_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/font_focus_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/font_hover_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/font_pressed_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/icon_hover_color = Color(0.89404607, 0.49414665, 0.1243136, 1)
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_0bkw2")
+Button/styles/hover = SubResource("StyleBoxTexture_sky72")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_fj5cn")
+Button/styles/normal = SubResource("StyleBoxTexture_kbped")
+Button/styles/pressed = SubResource("StyleBoxTexture_iy58a")
+Label/font_sizes/font_size = 50
+Label/fonts/font = ExtResource("4_6im5b")
+LineEdit/fonts/font = ExtResource("1_0bkw2")
+TabBar/fonts/font = ExtResource("1_0bkw2")
+TextEdit/fonts/font = ExtResource("1_0bkw2")
+Tree/font_sizes/font_size = 50
+Tree/fonts/font = ExtResource("1_0bkw2")
+Tree/fonts/title_button_font = ExtResource("1_0bkw2")

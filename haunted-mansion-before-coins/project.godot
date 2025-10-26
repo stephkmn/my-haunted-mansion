@@ -1,0 +1,26 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="HauntedMansionDecor"
+run/main_scene="uid://ba7r4w102mkm"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalState="*res://scripts/global_state.gd"
+
+[display]
+
+window/size/viewport_width=900
+window/size/viewport_height=1600
+window/stretch/scale=0.8

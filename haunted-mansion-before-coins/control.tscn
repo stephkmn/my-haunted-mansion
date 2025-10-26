@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=3 uid="uid://b8onn57fxbg0h"]
+
+[ext_resource type="Texture2D" uid="uid://lllm1w3uhjlh" path="res://popCatOpen.jpg" id="1_62e2m"]
+[ext_resource type="Texture2D" uid="uid://taftjm4mbul4" path="res://windowpane.png" id="1_iy58a"]
+[ext_resource type="Texture2D" uid="uid://dtld2kx1qy7mw" path="res://Halloween 🎃 _ Wallpapers Design Art Craft_ Full Moon _ Night sky with this magical iPhone Wallpaper.jpg" id="3_kbped"]
+[ext_resource type="Script" uid="uid://b6bift8apv75k" path="res://button_2.gd" id="4_ee4bf"]
+[ext_resource type="Script" uid="uid://cda5n07cidibc" path="res://button_game_1.gd" id="4_fj5cn"]
+[ext_resource type="Script" uid="uid://c80nndttip7yi" path="res://button_game_2.gd" id="6_iy58a"]
+[ext_resource type="Script" uid="uid://d2rguf8m3gbpx" path="res://button_game_3.gd" id="7_iy58a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sky72"]
+texture = ExtResource("1_iy58a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fj5cn"]
+texture = ExtResource("1_62e2m")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kbped"]
+texture = ExtResource("1_iy58a")
+modulate_color = Color(0.5921569, 1, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iy58a"]
+texture = ExtResource("1_iy58a")
+
+[sub_resource type="Theme" id="Theme_fj5cn"]
+Button/colors/font_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/font_focus_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/font_hover_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/font_pressed_color = Color(0.96862745, 0.20784314, 0, 1)
+Button/colors/icon_hover_color = Color(0.89404607, 0.49414665, 0.1243136, 1)
+Button/font_sizes/font_size = 20
+Button/styles/hover = SubResource("StyleBoxTexture_sky72")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_fj5cn")
+Button/styles/normal = SubResource("StyleBoxTexture_kbped")
+Button/styles/pressed = SubResource("StyleBoxTexture_iy58a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6a6wx"]
+texture = ExtResource("3_kbped")
+
+[sub_resource type="Theme" id="Theme_ee4bf"]
+
+[node name="ActivitySelectionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_fj5cn")
+
+[node name="SpookyHouseBkgd" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 1600.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6a6wx")
+
+[node name="ButtonGame1" type="Button" parent="."]
+visibility_layer = 2
+layout_mode = 0
+offset_left = 309.0
+offset_top = 923.0
+offset_right = 360.0
+offset_bottom = 1032.0
+text = "1"
+script = ExtResource("4_fj5cn")
+
+[node name="Button2" type="Button" parent="."]
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.513
+anchor_top = 0.30900002
+anchor_right = 0.513
+anchor_bottom = 0.30900002
+offset_left = -13.700012
+offset_top = -11.400024
+offset_right = 290.3
+offset_bottom = 256.59998
+theme = SubResource("Theme_ee4bf")
+theme_type_variation = &"FlatButton"
+script = ExtResource("4_ee4bf")
+
+[node name="ButtonGame2" type="Button" parent="."]
+visibility_layer = 2
+layout_mode = 0
+offset_left = 662.0
+offset_top = 838.0
+offset_right = 705.0
+offset_bottom = 961.0
+text = "2"
+script = ExtResource("6_iy58a")
+
+[node name="ButtonGame3" type="Button" parent="."]
+visibility_layer = 2
+layout_mode = 0
+offset_left = 785.0
+offset_top = 833.0
+offset_right = 829.0
+offset_bottom = 963.0
+text = "3"
+script = ExtResource("7_iy58a")
+
+[connection signal="pressed" from="ButtonGame1" to="ButtonGame1" method="_on_pressed"]
+[connection signal="pressed" from="ButtonGame1" to="Button2" method="_on_button_game_1_pressed"]
+[connection signal="pressed" from="ButtonGame2" to="Button2" method="_on_button_game_2_pressed"]
+[connection signal="pressed" from="ButtonGame2" to="ButtonGame2" method="_on_pressed"]
+[connection signal="toggled" from="ButtonGame2" to="ButtonGame2" method="_on_toggled"]
+[connection signal="pressed" from="ButtonGame3" to="ButtonGame3" method="_on_pressed"]
+[connection signal="toggled" from="ButtonGame3" to="ButtonGame3" method="_on_toggled"]

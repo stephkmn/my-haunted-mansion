@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdk0wmupqraem"]
+
+[ext_resource type="Theme" uid="uid://bp52h53onw02p" path="res://activity_selection_screen.tres" id="1_6lanp"]
+[ext_resource type="Script" uid="uid://do78qlfjcslnr" path="res://algebra_game.gd" id="1_nlx78"]
+[ext_resource type="Script" uid="uid://66ktigk8u4rv" path="res://item_list.gd" id="2_okst4"]
+[ext_resource type="Script" uid="uid://dvdlqjmcmymfc" path="res://rich_text_label.gd" id="3_6lanp"]
+[ext_resource type="Theme" uid="uid://c1gu1c180ow7f" path="res://MyTheme.tres" id="3_uaxrl"]
+[ext_resource type="FontFile" uid="uid://b1bj8jqggwim4" path="res://metal-mania.regular.ttf" id="5_cftfq"]
+[ext_resource type="Script" uid="uid://b2sb65pnbhxaq" path="res://return_home_from_algebra.gd" id="6_cftfq"]
+[ext_resource type="FontFile" uid="uid://bep1517kftrs" path="res://Scary Halloween Font.ttf" id="7_8b7mf"]
+[ext_resource type="Script" uid="uid://bwauft28u5ywn" path="res://points.gd" id="9_u5jpv"]
+[ext_resource type="Script" uid="uid://ddihl56wexh5r" path="res://correct_or_not.gd" id="10_40nxf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lanp"]
+bg_color = Color(0.62352943, 0.5058824, 0.85882354, 1)
+
+[node name="AlgebraGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6lanp")
+script = ExtResource("1_nlx78")
+
+[node name="AlgebraGameBkgd" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 1600.0
+theme = ExtResource("3_uaxrl")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6lanp")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 1180.0
+offset_right = 789.0
+offset_bottom = 1480.0
+theme = ExtResource("3_uaxrl")
+theme_override_font_sizes/font_size = 45
+auto_height = true
+item_count = 4
+fixed_column_width = 75
+item_0/text = "a"
+item_0/selectable = false
+item_1/text = "b"
+item_1/selectable = false
+item_2/text = "c"
+item_2/selectable = false
+item_3/text = "d"
+item_3/selectable = false
+script = ExtResource("2_okst4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 260.0
+offset_right = 860.0
+offset_bottom = 590.0
+theme = ExtResource("1_6lanp")
+theme_override_font_sizes/normal_font_size = 75
+text = "3x + 4 = 9"
+horizontal_alignment = 1
+script = ExtResource("3_6lanp")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 570.0
+offset_right = 850.0
+offset_bottom = 820.0
+theme = ExtResource("3_uaxrl")
+theme_override_fonts/normal_font = ExtResource("5_cftfq")
+theme_override_font_sizes/normal_font_size = 100
+text = "x = ___ ?"
+horizontal_alignment = 1
+
+[node name="ReturnHomeFromAlgebra" type="Button" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 45.0
+offset_right = 183.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.96875, 0.91227835, 0.8968506, 1)
+theme_override_fonts/font = ExtResource("7_8b7mf")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+flat = true
+script = ExtResource("6_cftfq")
+
+[node name="Points" type="Label" parent="."]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 38.0
+offset_right = 831.0
+offset_bottom = 167.0
+text = "0
+"
+horizontal_alignment = 2
+script = ExtResource("9_u5jpv")
+
+[node name="CorrectOrNot" type="Label" parent="."]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 1031.0
+offset_right = 683.0
+offset_bottom = 1125.0
+text = "wefewwfe"
+horizontal_alignment = 1
+script = ExtResource("10_40nxf")
+
+[connection signal="correct_answer" from="ItemList" to="Points" method="_add_points"]
+[connection signal="correct_answer" from="ItemList" to="CorrectOrNot" method="_display"]
+[connection signal="item_clicked" from="ItemList" to="ItemList" method="_on_item_clicked"]
+[connection signal="new_question" from="ItemList" to="RichTextLabel" method="_on_new_question"]
+[connection signal="pressed" from="ReturnHomeFromAlgebra" to="ReturnHomeFromAlgebra" method="_on_pressed"]

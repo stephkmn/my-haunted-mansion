@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://p6sl60gtirdl"]
+
+[ext_resource type="Theme" uid="uid://dxlikx2jlwkyn" path="res://activity_selection_screen.tres" id="1_u523y"]
+[ext_resource type="Texture2D" uid="uid://dtld2kx1qy7mw" path="res://Halloween 🎃 _ Wallpapers Design Art Craft_ Full Moon _ Night sky with this magical iPhone Wallpaper.jpg" id="3_w230l"]
+[ext_resource type="Script" uid="uid://cda5n07cidibc" path="res://button_game_1.gd" id="4_meggm"]
+[ext_resource type="Script" uid="uid://b6bift8apv75k" path="res://button_2.gd" id="5_2dyki"]
+[ext_resource type="Script" uid="uid://c80nndttip7yi" path="res://button_game_2.gd" id="6_7bdlt"]
+[ext_resource type="Script" uid="uid://d2rguf8m3gbpx" path="res://button_game_3.gd" id="7_7gp3s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6a6wx"]
+texture = ExtResource("3_w230l")
+
+[sub_resource type="Theme" id="Theme_ee4bf"]
+
+[node name="ActivitySelectionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_u523y")
+
+[node name="SpookyHouseBkgd" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 1600.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6a6wx")
+
+[node name="ButtonGame1" type="Button" parent="."]
+visibility_layer = 2
+layout_mode = 0
+offset_left = 309.0
+offset_top = 923.0
+offset_right = 360.0
+offset_bottom = 1032.0
+text = "1"
+script = ExtResource("4_meggm")
+
+[node name="Button2" type="Button" parent="."]
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.513
+anchor_top = 0.30900002
+anchor_right = 0.513
+anchor_bottom = 0.30900002
+offset_left = -13.700012
+offset_top = -11.400024
+offset_right = 290.3
+offset_bottom = 256.59998
+theme = SubResource("Theme_ee4bf")
+theme_type_variation = &"FlatButton"
+script = ExtResource("5_2dyki")
+
+[node name="ButtonGame2" type="Button" parent="."]
+visibility_layer = 2
+layout_mode = 0
+offset_left = 662.0
+offset_top = 838.0
+offset_right = 705.0
+offset_bottom = 961.0
+text = "2"
+script = ExtResource("6_7bdlt")
+
+[node name="ButtonGame3" type="Button" parent="."]
+visibility_layer = 2
+layout_mode = 0
+offset_left = 785.0
+offset_top = 833.0
+offset_right = 829.0
+offset_bottom = 963.0
+text = "3"
+script = ExtResource("7_7gp3s")
+
+[connection signal="pressed" from="ButtonGame1" to="ButtonGame1" method="_on_pressed"]
+[connection signal="pressed" from="ButtonGame1" to="Button2" method="_on_button_game_1_pressed"]
+[connection signal="pressed" from="ButtonGame2" to="Button2" method="_on_button_game_2_pressed"]
+[connection signal="pressed" from="ButtonGame2" to="ButtonGame2" method="_on_pressed"]
+[connection signal="toggled" from="ButtonGame2" to="ButtonGame2" method="_on_toggled"]
+[connection signal="pressed" from="ButtonGame3" to="ButtonGame3" method="_on_pressed"]
+[connection signal="toggled" from="ButtonGame3" to="ButtonGame3" method="_on_toggled"]
