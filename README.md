@@ -1,5 +1,5 @@
 ## Welcome to My Haunted Mansion! 👻
-This is a hackathon project that I we worked on for the Orange Coast College Spookathon 2025. <br>
+This is a hackathon project that we worked on for the Orange Coast College Spookathon 2025. <br>
 It was our first time using Godot and there are many improvements to be made but we are very proud of what we accomplished overall.
 
 ### Project Description
